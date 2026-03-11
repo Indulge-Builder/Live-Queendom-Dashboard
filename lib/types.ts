@@ -6,7 +6,7 @@ export interface TicketStats {
   totalThisMonth:    number; // all tickets created within this calendar month
   receivedToday:     number; // all tickets created today (any status)
   resolvedThisMonth: number; // tickets created this month, status = resolved
-  solvedToday:       number; // tickets created today, status = resolved
+  solvedToday:       number; // tickets resolved today (anchored to resolved_at)
   pendingToday:      number; // pending-status tickets created TODAY  ← DailyModal
   pendingToResolve:  number; // pending-status tickets created this month
   overdueCount:      number; // pending-status tickets created BEFORE today (backlog)

@@ -104,7 +104,7 @@ export interface QueendomBucket {
   totalThisMonth:    number; // all tickets created this month
   receivedToday:     number; // all tickets created today
   resolvedThisMonth: number; // tickets created this month, status = resolved
-  solvedToday:       number; // tickets created today, status = resolved
+  solvedToday:       number; // tickets resolved today (resolved_at = today) ← DailyModal hero
   pendingToday:      number; // pending-status tickets created TODAY  ← DailyModal
   pendingToResolve:  number; // pending-status tickets created this month
   overdueCount:      number; // pending-status tickets created before today
@@ -172,6 +172,9 @@ export function transformTickets(tickets: RawTicket[]): TransformedStats {
       const isThisMonth = createdMonth  === THIS_MONTH;
       const isOverdue   = pending && createdDay !== "" && createdDay < TODAY;
 
+      // resolved_at → IST day, used for solvedToday (when was it actually closed?)
+      const resolvedDay = res ? toISTDay(ticket.resolved_at) : "";
+
       // ── Queendom bucket ──────────────────────────────────────────────────────
       const qKey =
         queueName.includes("ananyshree") ? "ananyshree" :
@@ -181,10 +184,12 @@ export function transformTickets(tickets: RawTicket[]): TransformedStats {
         const q = acc.queendoms[qKey];
         if (isThisMonth) q.totalThisMonth++;
         if (isToday)     q.receivedToday++;
-        if (res && isThisMonth) q.resolvedThisMonth++;
-        if (res && isToday)     q.solvedToday++;
-        if (pending && isToday)      q.pendingToday++;
-        if (pending && isThisMonth)  q.pendingToResolve++;
+        if (res && isThisMonth)       q.resolvedThisMonth++;
+        // solvedToday: how many tickets were closed today — anchored to resolved_at
+        // so tickets created yesterday but resolved today are correctly counted
+        if (res && resolvedDay === TODAY) q.solvedToday++;
+        if (pending && isToday)       q.pendingToday++;
+        if (pending && isThisMonth)   q.pendingToResolve++;
         if (isOverdue) q.overdueCount++;
       }
 

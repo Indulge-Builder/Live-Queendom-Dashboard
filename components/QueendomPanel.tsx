@@ -48,7 +48,7 @@ function DailyModal({ tickets, delay }: { tickets: TicketStats; delay: number })
               className="text-emerald-400/65 flex-shrink-0"
               style={{ width: "clamp(12px,1.05vw,18px)", height: "clamp(12px,1.05vw,18px)" }}
             />
-            <span className="font-inter text-[clamp(10px,0.78vw,14px)] tracking-[0.45em] uppercase text-emerald-400/65">
+            <span className="font-inter font-semibold text-[clamp(13px,1.15vw,20px)] tracking-[0.3em] uppercase text-emerald-400/80">
               Solved
             </span>
           </div>
@@ -66,7 +66,7 @@ function DailyModal({ tickets, delay }: { tickets: TicketStats; delay: number })
               className="text-white/35 flex-shrink-0"
               style={{ width: "clamp(12px,1.05vw,18px)", height: "clamp(12px,1.05vw,18px)" }}
             />
-            <span className="font-inter text-[clamp(10px,0.78vw,14px)] tracking-[0.45em] uppercase text-white/35">
+            <span className="font-inter font-semibold text-[clamp(13px,1.15vw,20px)] tracking-[0.3em] uppercase text-white/55">
               Received
             </span>
           </div>
@@ -84,7 +84,7 @@ function DailyModal({ tickets, delay }: { tickets: TicketStats; delay: number })
               className="text-white/28 flex-shrink-0"
               style={{ width: "clamp(12px,1.05vw,18px)", height: "clamp(12px,1.05vw,18px)" }}
             />
-            <span className="font-inter text-[clamp(10px,0.78vw,14px)] tracking-[0.45em] uppercase text-white/28">
+            <span className="font-inter font-semibold text-[clamp(13px,1.15vw,20px)] tracking-[0.3em] uppercase text-white/45">
               Pending
             </span>
           </div>
@@ -123,7 +123,7 @@ function MonthlyModal({ tickets, delay }: { tickets: TicketStats; delay: number 
               className="text-gold-400/70 flex-shrink-0"
               style={{ width: "clamp(12px,1.05vw,18px)", height: "clamp(12px,1.05vw,18px)" }}
             />
-            <span className="font-inter text-[clamp(10px,0.78vw,14px)] tracking-[0.45em] uppercase text-gold-400/65">
+            <span className="font-inter font-semibold text-[clamp(13px,1.15vw,20px)] tracking-[0.3em] uppercase text-gold-400/80">
               Resolved
             </span>
           </div>
@@ -141,7 +141,7 @@ function MonthlyModal({ tickets, delay }: { tickets: TicketStats; delay: number 
               className="text-champagne/35 flex-shrink-0"
               style={{ width: "clamp(12px,1.05vw,18px)", height: "clamp(12px,1.05vw,18px)" }}
             />
-            <span className="font-inter text-[clamp(10px,0.78vw,14px)] tracking-[0.45em] uppercase text-champagne/35">
+            <span className="font-inter font-semibold text-[clamp(13px,1.15vw,20px)] tracking-[0.3em] uppercase text-champagne/55">
               Received
             </span>
           </div>
@@ -164,8 +164,8 @@ function MonthlyModal({ tickets, delay }: { tickets: TicketStats; delay: number 
               }}
             />
             <span
-              className="font-inter text-[clamp(10px,0.78vw,14px)] tracking-[0.45em] uppercase"
-              style={{ color: "rgba(217,119,6,0.65)" }}
+              className="font-inter font-semibold text-[clamp(13px,1.15vw,20px)] tracking-[0.3em] uppercase"
+              style={{ color: "rgba(217,119,6,0.82)" }}
             >
               Pending
             </span>
