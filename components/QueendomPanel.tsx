@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle, CalendarDays, Clock, TrendingUp, AlertTriangle } from "lucide-react";
+import { CheckCircle, CalendarDays, Clock, TrendingUp } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
 import GoldPill from "./GoldPill";
 import AgentLeaderboard from "./AgentLeaderboard";
@@ -100,8 +100,8 @@ function DailyModal({ tickets, delay }: { tickets: TicketStats; delay: number })
 }
 
 // ── Modal 2 — Monthly "Long-term Pulse" ──────────────────────────────────────
-// Layout: hero Resolved This Month (gold, largest) | Received This Month | Overdue
-// Overdue uses a muted amber/burnt-orange accent (#d97706 / amber-600).
+// Layout: hero Resolved This Month (gold, largest) | Received This Month | Pending
+// Pending = all non-resolved tickets created this month.
 function MonthlyModal({ tickets, delay }: { tickets: TicketStats; delay: number }) {
   return (
     <div className="glass gold-border-glow rounded-2xl relative overflow-hidden flex flex-col"
@@ -152,10 +152,10 @@ function MonthlyModal({ tickets, delay }: { tickets: TicketStats; delay: number 
           />
         </div>
 
-        {/* Metric C — Overdue (muted burnt-orange / amber warning) */}
+        {/* Metric C — Pending This Month (non-resolved tickets created this month) */}
         <div className="flex flex-col items-center justify-center text-center px-[0.8vw]">
           <div className="flex items-center gap-1 mb-[0.3vh]">
-            <AlertTriangle
+            <Clock
               className="flex-shrink-0"
               style={{
                 width: "clamp(12px,1.05vw,18px)",
@@ -167,11 +167,11 @@ function MonthlyModal({ tickets, delay }: { tickets: TicketStats; delay: number 
               className="font-inter text-[clamp(10px,0.78vw,14px)] tracking-[0.45em] uppercase"
               style={{ color: "rgba(217,119,6,0.65)" }}
             >
-              Overdue
+              Pending
             </span>
           </div>
           <AnimatedCounter
-            value={tickets.overdueCount}
+            value={tickets.pendingToResolve}
             className="font-edu text-[clamp(1.5rem,2.7vw,4rem)] leading-none tabular-nums text-amber-600/85"
             delay={delay + 1150}
           />
