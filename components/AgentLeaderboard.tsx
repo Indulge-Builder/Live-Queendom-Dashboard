@@ -28,10 +28,11 @@ const CIRCUMFERENCE = 2 * Math.PI * RING_R;
 const GRID_COLS =
   "grid-cols-[3rem_1fr_7rem_4.5rem_4rem] " +
   "lg:grid-cols-[4.5rem_1fr_9.5rem_6rem_5rem] " +
-  "xl:grid-cols-[5.5rem_1fr_11rem_7rem_5.5rem]";
+  "xl:grid-cols-[6rem_1fr_12rem_8rem_6.5rem] " +
+  "2xl:grid-cols-[7rem_1fr_14rem_9.5rem_7.5rem]";
 
 // Shared gap class — kept in one place so header and rows always match
-const GRID_GAP = "gap-x-2 lg:gap-x-4 xl:gap-x-6";
+const GRID_GAP = "gap-x-2 lg:gap-x-4 xl:gap-x-6 2xl:gap-x-8";
 
 function getInitials(name: string): string {
   const parts = name.trim().split(" ");
@@ -98,12 +99,12 @@ function PerformanceRing({
   const offset = CIRCUMFERENCE * (1 - clampedPct);
 
   return (
-    <div className="relative flex-shrink-0 w-[48px] h-[48px] lg:w-[64px] lg:h-[64px] xl:w-[76px] xl:h-[76px]">
+    <div className="relative flex-shrink-0 w-[48px] h-[48px] lg:w-[64px] lg:h-[64px] xl:w-[80px] xl:h-[80px] 2xl:w-[90px] 2xl:h-[90px]">
       {/* Crown — rank 1 only, floats just above the ring */}
       {isTopRanked && (
         <div className="absolute -top-[9px] left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
           <Crown
-            className="w-[12px] h-[12px] lg:w-[15px] lg:h-[15px] xl:w-[17px] xl:h-[17px] text-gold-400"
+            className="w-[12px] h-[12px] lg:w-[16px] lg:h-[16px] xl:w-[20px] xl:h-[20px] 2xl:w-[23px] 2xl:h-[23px] text-gold-400"
             style={{
               filter:
                 "drop-shadow(0 0 5px rgba(201,168,76,0.95)) drop-shadow(0 0 14px rgba(201,168,76,0.55))",
@@ -153,7 +154,7 @@ function PerformanceRing({
         className="absolute inset-0 flex items-center justify-center rounded-full"
         style={{ border: "1px solid rgba(201,168,76,0.14)" }}
       >
-        <span className="font-playfair text-[0.6rem] lg:text-[0.8rem] xl:text-[0.95rem] tracking-widest text-gold-400 select-none">
+        <span className="font-playfair text-[0.6rem] lg:text-[0.8rem] xl:text-[1rem] 2xl:text-[1.15rem] tracking-widest text-gold-400 select-none">
           {getInitials(name)}
         </span>
       </div>
@@ -199,7 +200,7 @@ function AgentRow({ agent, index, baseDelay }: RowProps) {
     >
       {/* 5-column data grid */}
       <div
-        className={`grid ${GRID_COLS} ${GRID_GAP} items-center px-2 lg:px-3 py-[1.05vh] rounded-xl hover:bg-white/[0.025] transition-colors duration-300 group`}
+        className={`grid ${GRID_COLS} ${GRID_GAP} items-center px-2 lg:px-3 xl:px-4 py-[0.9vh] rounded-xl hover:bg-white/[0.025] transition-colors duration-300 group`}
       >
         {/* Col 1 — Avatar ring (Crown badge for rank 1) */}
         <PerformanceRing
@@ -210,7 +211,7 @@ function AgentRow({ agent, index, baseDelay }: RowProps) {
         />
 
         {/* Col 2 — Agent name */}
-        <p className="font-baskerville text-[clamp(0.82rem,1.4vw,1.9rem)] tracking-wide text-champagne leading-none truncate font-medium">
+        <p className="font-baskerville text-[clamp(0.85rem,1.45vw,2.3rem)] tracking-wide text-champagne leading-none truncate font-medium">
           {agent.name}
         </p>
 
@@ -218,15 +219,15 @@ function AgentRow({ agent, index, baseDelay }: RowProps) {
         <div className="flex items-baseline justify-center gap-[3px] lg:gap-[5px]">
           <AnimatedValue
             value={agent.tasksCompletedToday}
-            className="font-edu text-[clamp(1.4rem,2.3vw,2.9rem)] leading-none text-gold-400 tabular-nums font-semibold"
+            className="font-edu text-[clamp(1.5rem,2.5vw,3.6rem)] leading-none text-gold-400 tabular-nums font-semibold"
             style={{ textShadow: "0 0 16px rgba(201,168,76,0.40)" }}
           />
-          <span className="font-inter text-[clamp(0.75rem,0.85vw,1.2rem)] text-white/20 leading-none">
+          <span className="font-inter text-[clamp(0.8rem,0.9vw,1.4rem)] text-white/20 leading-none">
             /
           </span>
           <AnimatedValue
             value={agent.tasksAssignedToday}
-            className="font-inter text-[clamp(0.9rem,1.3vw,1.7rem)] text-white/38 leading-none tabular-nums"
+            className="font-inter text-[clamp(0.95rem,1.35vw,2rem)] text-white/38 leading-none tabular-nums"
           />
         </div>
 
@@ -234,7 +235,7 @@ function AgentRow({ agent, index, baseDelay }: RowProps) {
         <div className="flex justify-end">
           <AnimatedValue
             value={agent.tasksCompletedThisMonth}
-            className="font-edu text-[clamp(1.2rem,1.9vw,2.7rem)] leading-none tabular-nums font-semibold"
+            className="font-edu text-[clamp(1.3rem,2.1vw,3.2rem)] leading-none tabular-nums font-semibold"
             style={{
               color: rank === 1 ? "rgba(201,168,76,0.85)" : "rgba(190,190,190,0.55)",
             }}
@@ -245,7 +246,7 @@ function AgentRow({ agent, index, baseDelay }: RowProps) {
         <div className="flex justify-end">
           <AnimatedValue
             value={agent.overdueCount}
-            className="font-edu text-[clamp(1.2rem,1.9vw,2.7rem)] leading-none tabular-nums font-semibold"
+            className="font-edu text-[clamp(1.3rem,2.1vw,3.2rem)] leading-none tabular-nums font-semibold"
             style={{
               color:
                 agent.overdueCount > 0
@@ -284,19 +285,19 @@ export default function AgentLeaderboard({
 
         {/* ── Sticky column header ── */}
         <div className="sticky top-0 z-10 backdrop-blur-sm border-b border-gold-500/[0.12] flex-shrink-0">
-          <div className={`grid ${GRID_COLS} ${GRID_GAP} px-2 lg:px-3 pb-[0.8vh]`}>
+          <div className={`grid ${GRID_COLS} ${GRID_GAP} px-2 lg:px-3 xl:px-4 pb-[0.9vh]`}>
             <span /> {/* avatar */}
-            <span className="font-inter text-[clamp(0.55rem,0.78vw,0.95rem)] tracking-[0.45em] uppercase text-yellow-500/60 font-semibold pl-0.5">
+            <span className="font-inter text-[clamp(0.58rem,0.82vw,1.1rem)] tracking-[0.45em] uppercase text-yellow-500/60 font-semibold pl-0.5">
               Agent
             </span>
-            <span className="font-inter text-[clamp(0.55rem,0.78vw,0.95rem)] tracking-[0.45em] uppercase text-yellow-500/60 font-semibold text-center">
+            <span className="font-inter text-[clamp(0.58rem,0.82vw,1.1rem)] tracking-[0.45em] uppercase text-yellow-500/60 font-semibold text-center">
               Runrate
             </span>
-            <span className="font-inter text-[clamp(0.55rem,0.78vw,0.95rem)] tracking-[0.45em] uppercase text-yellow-500/60 font-semibold text-right">
+            <span className="font-inter text-[clamp(0.58rem,0.82vw,1.1rem)] tracking-[0.45em] uppercase text-yellow-500/60 font-semibold text-right">
               Monthly
             </span>
             <span
-              className="font-inter text-[clamp(0.55rem,0.78vw,0.95rem)] tracking-[0.45em] uppercase font-semibold text-right"
+              className="font-inter text-[clamp(0.58rem,0.82vw,1.1rem)] tracking-[0.45em] uppercase font-semibold text-right"
               style={{ color: "rgba(217,119,6,0.65)" }}
             >
               Pending

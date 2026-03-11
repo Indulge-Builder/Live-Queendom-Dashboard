@@ -30,11 +30,11 @@ const containerVariants = {
 function DailyModal({ tickets, delay }: { tickets: TicketStats; delay: number }) {
   return (
     <div className="glass gold-border-glow rounded-2xl relative overflow-hidden flex flex-col"
-      style={{ padding: "1.1vh clamp(10px, 1.8vw, 24px)" }}>
+      style={{ padding: "1.4vh clamp(12px, 2vw, 30px)" }}>
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.04] to-transparent pointer-events-none rounded-2xl" />
 
       {/* Eyebrow */}
-      <p className="font-inter text-[clamp(8px,0.68vw,10px)] tracking-[0.65em] uppercase text-gold-500/35 mb-[0.55vh] text-center relative z-10 flex-shrink-0">
+      <p className="font-inter text-[clamp(10px,0.72vw,14px)] tracking-[0.65em] uppercase text-gold-500/35 mb-[0.6vh] text-center relative z-10 flex-shrink-0">
         Today&apos;s Pulse
       </p>
 
@@ -46,15 +46,15 @@ function DailyModal({ tickets, delay }: { tickets: TicketStats; delay: number })
           <div className="flex items-center gap-1 mb-[0.3vh]">
             <CheckCircle
               className="text-emerald-400/65 flex-shrink-0"
-              style={{ width: "clamp(9px,0.9vw,13px)", height: "clamp(9px,0.9vw,13px)" }}
+              style={{ width: "clamp(12px,1.05vw,18px)", height: "clamp(12px,1.05vw,18px)" }}
             />
-            <span className="font-inter text-[clamp(8px,0.68vw,10px)] tracking-[0.45em] uppercase text-emerald-400/65">
+            <span className="font-inter text-[clamp(10px,0.78vw,14px)] tracking-[0.45em] uppercase text-emerald-400/65">
               Solved
             </span>
           </div>
           <AnimatedCounter
             value={tickets.solvedToday}
-            className="font-edu text-[clamp(1.9rem,3.4vw,4.6rem)] leading-none tabular-nums text-emerald-400 emerald-glow-hero"
+            className="font-edu text-[clamp(2.2rem,4vw,6rem)] leading-none tabular-nums text-emerald-400 emerald-glow-hero"
             delay={delay + 800}
           />
         </div>
@@ -64,33 +64,33 @@ function DailyModal({ tickets, delay }: { tickets: TicketStats; delay: number })
           <div className="flex items-center gap-1 mb-[0.3vh]">
             <CalendarDays
               className="text-white/35 flex-shrink-0"
-              style={{ width: "clamp(9px,0.9vw,13px)", height: "clamp(9px,0.9vw,13px)" }}
+              style={{ width: "clamp(12px,1.05vw,18px)", height: "clamp(12px,1.05vw,18px)" }}
             />
-            <span className="font-inter text-[clamp(8px,0.68vw,10px)] tracking-[0.45em] uppercase text-white/35">
+            <span className="font-inter text-[clamp(10px,0.78vw,14px)] tracking-[0.45em] uppercase text-white/35">
               Received
             </span>
           </div>
           <AnimatedCounter
             value={tickets.receivedToday}
-            className="font-edu text-[clamp(1.5rem,2.6vw,3.6rem)] leading-none tabular-nums text-white/80"
+            className="font-edu text-[clamp(1.8rem,3.1vw,4.8rem)] leading-none tabular-nums text-white/80"
             delay={delay + 960}
           />
         </div>
 
-        {/* Metric C — Pending (muted, 45% white) */}
+        {/* Metric C — Pending Today (tickets from today not yet resolved) */}
         <div className="flex flex-col items-center justify-center text-center px-[0.8vw]">
           <div className="flex items-center gap-1 mb-[0.3vh]">
             <Clock
               className="text-white/28 flex-shrink-0"
-              style={{ width: "clamp(9px,0.9vw,13px)", height: "clamp(9px,0.9vw,13px)" }}
+              style={{ width: "clamp(12px,1.05vw,18px)", height: "clamp(12px,1.05vw,18px)" }}
             />
-            <span className="font-inter text-[clamp(8px,0.68vw,10px)] tracking-[0.45em] uppercase text-white/28">
+            <span className="font-inter text-[clamp(10px,0.78vw,14px)] tracking-[0.45em] uppercase text-white/28">
               Pending
             </span>
           </div>
           <AnimatedCounter
-            value={tickets.pendingToResolve}
-            className="font-edu text-[clamp(1.3rem,2.2vw,3rem)] leading-none tabular-nums text-white/45"
+            value={tickets.pendingToday}
+            className="font-edu text-[clamp(1.5rem,2.7vw,4rem)] leading-none tabular-nums text-white/45"
             delay={delay + 1100}
           />
         </div>
@@ -105,11 +105,11 @@ function DailyModal({ tickets, delay }: { tickets: TicketStats; delay: number })
 function MonthlyModal({ tickets, delay }: { tickets: TicketStats; delay: number }) {
   return (
     <div className="glass gold-border-glow rounded-2xl relative overflow-hidden flex flex-col"
-      style={{ padding: "1.1vh clamp(10px, 1.8vw, 24px)" }}>
+      style={{ padding: "1.4vh clamp(12px, 2vw, 30px)" }}>
       <div className="absolute inset-0 bg-gradient-to-br from-gold-500/[0.04] to-transparent pointer-events-none rounded-2xl" />
 
       {/* Eyebrow */}
-      <p className="font-inter text-[clamp(8px,0.68vw,10px)] tracking-[0.65em] uppercase text-gold-500/35 mb-[0.55vh] text-center relative z-10 flex-shrink-0">
+      <p className="font-inter text-[clamp(10px,0.72vw,14px)] tracking-[0.65em] uppercase text-gold-500/35 mb-[0.6vh] text-center relative z-10 flex-shrink-0">
         Monthly Performance
       </p>
 
@@ -121,15 +121,15 @@ function MonthlyModal({ tickets, delay }: { tickets: TicketStats; delay: number 
           <div className="flex items-center gap-1 mb-[0.3vh]">
             <TrendingUp
               className="text-gold-400/70 flex-shrink-0"
-              style={{ width: "clamp(9px,0.9vw,13px)", height: "clamp(9px,0.9vw,13px)" }}
+              style={{ width: "clamp(12px,1.05vw,18px)", height: "clamp(12px,1.05vw,18px)" }}
             />
-            <span className="font-inter text-[clamp(8px,0.68vw,10px)] tracking-[0.45em] uppercase text-gold-400/65">
+            <span className="font-inter text-[clamp(10px,0.78vw,14px)] tracking-[0.45em] uppercase text-gold-400/65">
               Resolved
             </span>
           </div>
           <AnimatedCounter
             value={tickets.resolvedThisMonth}
-            className="font-edu text-[clamp(1.9rem,3.4vw,4.6rem)] leading-none tabular-nums text-gold-400"
+            className="font-edu text-[clamp(2.2rem,4vw,6rem)] leading-none tabular-nums text-gold-400"
             delay={delay + 850}
           />
         </div>
@@ -139,15 +139,15 @@ function MonthlyModal({ tickets, delay }: { tickets: TicketStats; delay: number 
           <div className="flex items-center gap-1 mb-[0.3vh]">
             <CalendarDays
               className="text-champagne/35 flex-shrink-0"
-              style={{ width: "clamp(9px,0.9vw,13px)", height: "clamp(9px,0.9vw,13px)" }}
+              style={{ width: "clamp(12px,1.05vw,18px)", height: "clamp(12px,1.05vw,18px)" }}
             />
-            <span className="font-inter text-[clamp(8px,0.68vw,10px)] tracking-[0.45em] uppercase text-champagne/35">
+            <span className="font-inter text-[clamp(10px,0.78vw,14px)] tracking-[0.45em] uppercase text-champagne/35">
               Received
             </span>
           </div>
           <AnimatedCounter
             value={tickets.totalThisMonth}
-            className="font-edu text-[clamp(1.5rem,2.6vw,3.6rem)] leading-none tabular-nums text-champagne/75"
+            className="font-edu text-[clamp(1.8rem,3.1vw,4.8rem)] leading-none tabular-nums text-champagne/75"
             delay={delay + 1000}
           />
         </div>
@@ -158,13 +158,13 @@ function MonthlyModal({ tickets, delay }: { tickets: TicketStats; delay: number 
             <AlertTriangle
               className="flex-shrink-0"
               style={{
-                width: "clamp(9px,0.9vw,13px)",
-                height: "clamp(9px,0.9vw,13px)",
+                width: "clamp(12px,1.05vw,18px)",
+                height: "clamp(12px,1.05vw,18px)",
                 color: "rgba(217,119,6,0.70)",
               }}
             />
             <span
-              className="font-inter text-[clamp(8px,0.68vw,10px)] tracking-[0.45em] uppercase"
+              className="font-inter text-[clamp(10px,0.78vw,14px)] tracking-[0.45em] uppercase"
               style={{ color: "rgba(217,119,6,0.65)" }}
             >
               Overdue
@@ -172,7 +172,7 @@ function MonthlyModal({ tickets, delay }: { tickets: TicketStats; delay: number 
           </div>
           <AnimatedCounter
             value={tickets.overdueCount}
-            className="font-edu text-[clamp(1.3rem,2.2vw,3rem)] leading-none tabular-nums text-amber-600/85"
+            className="font-edu text-[clamp(1.5rem,2.7vw,4rem)] leading-none tabular-nums text-amber-600/85"
             delay={delay + 1150}
           />
         </div>
@@ -202,7 +202,7 @@ export default function QueendomPanel({
     // No min-h mobile fallback — this layout targets a fixed-display TV.
     <motion.section
       className="relative flex-1 flex flex-col overflow-hidden"
-      style={{ padding: "1.8vh clamp(12px, 2.5vw, 36px)" }}
+      style={{ padding: "1.6vh clamp(16px, 2.8vw, 48px)" }}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -217,20 +217,20 @@ export default function QueendomPanel({
 
       {/* ── Header: name + subtitle + GoldPill ── */}
       <motion.div
-        className="relative flex flex-col items-center text-center flex-shrink-0 mb-[1.1vh]"
+        className="relative flex flex-col items-center text-center flex-shrink-0 mb-[1.3vh]"
         variants={itemVariants}
       >
         {/* Top ornamental rule */}
         <div className="flex items-center gap-4 w-full mb-[0.6vh]">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold-500/40" />
-          <span className="text-gold-500/35 text-[13px]">✦</span>
+          <span className="text-gold-500/35 text-[16px]">✦</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gold-500/40" />
         </div>
 
-        <h2 className="font-playfair text-[clamp(1.6rem,3.2vw,3.8rem)] tracking-[0.25em] text-champagne uppercase leading-none">
+        <h2 className="font-playfair text-[clamp(1.9rem,3.6vw,5rem)] tracking-[0.25em] text-champagne uppercase leading-none">
           {name}
         </h2>
-        <p className="font-inter text-[clamp(9px,0.85vw,12px)] tracking-[0.7em] uppercase text-gold-500/40 mt-[3px] mb-[0.6vh]">
+        <p className="font-inter text-[clamp(11px,0.9vw,16px)] tracking-[0.7em] uppercase text-gold-500/40 mt-[4px] mb-[0.7vh]">
           Queendom
         </p>
 
@@ -239,15 +239,15 @@ export default function QueendomPanel({
         {/* Bottom ornamental rule */}
         <div className="flex items-center gap-4 w-full mt-[0.7vh]">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold-500/20" />
-          <span className="text-[10px] tracking-[0.5em] text-gold-500/20">✦ &nbsp; ✦</span>
+          <span className="text-[12px] tracking-[0.5em] text-gold-500/20">✦ &nbsp; ✦</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gold-500/20" />
         </div>
       </motion.div>
 
       {/* ── Two command modals — side by side, fixed vh height ── */}
       <motion.div
-        className="flex-shrink-0 grid grid-cols-2 gap-[1.2vw] mb-[1.1vh]"
-        style={{ height: "9.5vh" }}
+        className="flex-shrink-0 grid grid-cols-2 gap-[1.4vw] mb-[1.3vh]"
+        style={{ height: "15vh" }}
         variants={itemVariants}
       >
         <DailyModal   tickets={stats.tickets} delay={delay} />
@@ -258,7 +258,7 @@ export default function QueendomPanel({
       {/* flex-1 + min-h-0 ensures this never pushes past 100vh */}
       <motion.div
         className="flex-1 min-h-0 flex flex-col glass gold-border-glow rounded-2xl relative overflow-hidden"
-        style={{ padding: "1.2vh clamp(10px, 1.8vw, 24px)" }}
+        style={{ padding: "1.4vh clamp(12px, 2vw, 30px)" }}
         variants={itemVariants}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-gold-500/[0.03] to-transparent pointer-events-none rounded-2xl" />

@@ -3,12 +3,13 @@ export interface MemberStats {
 }
 
 export interface TicketStats {
-  totalThisMonth: number;    // all tickets created within this calendar month
-  receivedToday: number;     // all tickets created today (any status)
-  resolvedThisMonth: number; // status="resolved" tickets where resolved_at is this month
-  solvedToday: number;       // status="resolved" tickets where resolved_at is today
-  pendingToResolve: number;  // active-status tickets created this month
-  overdueCount: number;      // active-status tickets created BEFORE today (backlog)
+  totalThisMonth:    number; // all tickets created within this calendar month
+  receivedToday:     number; // all tickets created today (any status)
+  resolvedThisMonth: number; // tickets created this month, status = resolved
+  solvedToday:       number; // tickets created today, status = resolved
+  pendingToday:      number; // pending-status tickets created TODAY  ← DailyModal
+  pendingToResolve:  number; // pending-status tickets created this month
+  overdueCount:      number; // pending-status tickets created BEFORE today (backlog)
 }
 
 export interface AgentStats {

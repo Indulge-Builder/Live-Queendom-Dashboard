@@ -104,6 +104,7 @@ export interface QueendomBucket {
   receivedToday:     number; // all tickets created today
   resolvedThisMonth: number; // tickets created this month, status = resolved
   solvedToday:       number; // tickets created today, status = resolved
+  pendingToday:      number; // pending-status tickets created TODAY  ← DailyModal
   pendingToResolve:  number; // pending-status tickets created this month
   overdueCount:      number; // pending-status tickets created before today
 }
@@ -142,6 +143,7 @@ export function transformTickets(tickets: RawTicket[]): TransformedStats {
     receivedToday:     0,
     resolvedThisMonth: 0,
     solvedToday:       0,
+    pendingToday:      0,
     pendingToResolve:  0,
     overdueCount:      0,
   });
@@ -180,7 +182,8 @@ export function transformTickets(tickets: RawTicket[]): TransformedStats {
         if (isToday)     q.receivedToday++;
         if (res && isThisMonth) q.resolvedThisMonth++;
         if (res && isToday)     q.solvedToday++;
-        if (pending && isThisMonth) q.pendingToResolve++;
+        if (pending && isToday)      q.pendingToday++;
+        if (pending && isThisMonth)  q.pendingToResolve++;
         if (isOverdue) q.overdueCount++;
       }
 
