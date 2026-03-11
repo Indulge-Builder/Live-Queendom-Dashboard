@@ -70,6 +70,7 @@ export function toISTDay(ts: string | null | undefined): string {
 export const RESOLVED_STATUSES = new Set(["resolved"]);
 
 export const PENDING_STATUSES = new Set([
+  "new",
   "open",
   "pending",
   "nudge client",

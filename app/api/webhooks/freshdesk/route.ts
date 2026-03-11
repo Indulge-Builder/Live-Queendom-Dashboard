@@ -58,6 +58,7 @@ interface FreshdeskPayload {
 const RESOLVED_STATUSES = new Set(["resolved"]);
 
 const ACTIVE_STATUSES = new Set([
+  "new",
   "open",
   "pending",
   "nudge client",
